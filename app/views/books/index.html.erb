@@ -1,0 +1,21 @@
+<div>
+  <%= current_user.name %>
+  <p>introduction <%= current_user.introduction %></p>
+</div>
+<%= render 'books/list', books: @books %>
+<% @books.each do |book| %>
+<div>
+  <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p> Title <%= book.title %></p>
+  <p>Opinion <%= book.body %></p>
+</div>
+<% end %>
+
+<% @books.each do |book| %>
+
+  <%= link_to 'show', book_path(book.id)  %>
+   <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <p>Title <%= book.title %></p>
+  <p>Opinion <%= book.body %></p>
+
+<% end %>

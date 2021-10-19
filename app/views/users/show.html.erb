@@ -1,0 +1,10 @@
+<% render 'users/list',users: @users %>
+<%= render 'books/list', books: @books %>
+<% @books.each do |book| %>
+
+  <%= link_to 'show', book_path(book.id)  %>
+   <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <p>Title <%= book.title %></p>
+  <p>Opinion <%= book.body %></p>
+
+<% end %>
