@@ -1,3 +1,4 @@
+<%= render 'users/list',user: @user,book_new:@book_new %>
 <h1>New book</h1>
 <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this user from being saved:

@@ -1,21 +1,26 @@
-<div>
-  <%= current_user.name %>
-  <p>introduction <%= current_user.introduction %></p>
-</div>
-<%= render 'books/list', books: @books %>
+<main>
+    <p id="notice"></p>
+    <div class="container px-5 px-sm-0">
+
+<div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      <table class="table">
+
+ <tbody><tr></tr>
+  <tr>
+
+   <h2>Book detail</h2>
+   <table class="table">
+<%= render 'users/list', book_new: @book, user: @user %>
 <% @books.each do |book| %>
 <div>
-  <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p><%= attachment_image_tag book.@user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p> Title <%= book.title %></p>
   <p>Opinion <%= book.body %></p>
+  <%= link_to 'Show', book_path(book.id) %>
 </div>
 <% end %>
 
-<% @books.each do |book| %>
-
-  <%= link_to 'show', book_path(book.id)  %>
-   <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <p>Title <%= book.title %></p>
-  <p>Opinion <%= book.body %></p>
-
-<% end %>
+</main>

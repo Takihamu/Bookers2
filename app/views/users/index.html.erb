@@ -1,7 +1,8 @@
-<% render 'users/list',users: @users %>
-<% @user.each do |user| %>
+<%= render 'users/list',user: @user,book_new:@book_new %>
+<% @users.each do |user| %>
 <div>
-  <p>image <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p>image <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p>name  <%= user.name %></p>
   <%= link_to 'show', user_path(user.id)  %>
 </div>
+<% end %>

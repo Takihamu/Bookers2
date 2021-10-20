@@ -1,12 +1,39 @@
-<div>
-  <p>ユーザーネーム <%= @user.name %></p>
-  <p>introduction <%= @user.introduction %></p>
-</div>
+ <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/list',user: @user,@book_user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+  		<table class="table">
+  		  <tbody>
+  		    <tr>
+  		      <td>
+  		        <%= link_to user_path(@book.user_id) do %>
+  		          <%= attachment_image_tag @book.user, :profile_image,:fill, 50, 50, fallback: "no_image.jpg" %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to @book.title, book_path(@book) %>
+              <% end %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <% if @book.id = current_user.id %>
+            <% end %>
+            <td>
+              <%= link_to "Edit", class: "btn btn-sm"%>
+            </td>
+            <td>
+            <% if @book.id = current_user.id %>
 
-<div>
-<h1>Book detail</h1>
-  <%= @user.name %>
-  <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <%= @book.title %>
-  <%= @book.body %>
+            <%= link_to"Destroy",method: :delete, class: "btn btn-sm"%>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
