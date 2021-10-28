@@ -38,9 +38,9 @@
                 <% end %>
                 <td><%=link_to book.title, book_path(book.id)%></td>
                 <td><%= book.body %></td>
-
               </tr>
             <% end %>
+  <p><%= link_to "#{book.favorites.count}コメント",book_path(book.id)%> </p>
   </tbody>
 </table>
 </div>

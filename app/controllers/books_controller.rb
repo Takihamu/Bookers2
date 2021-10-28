@@ -38,6 +38,7 @@ class BooksController < ApplicationController
     @book_new = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @favorite = Favorite.new
   end
 
   def destroy
