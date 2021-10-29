@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create, :update,:index, :show, :edit,:destroy]
   resources :users, only: [:index, :create,:show,:edit,:update,:edit, :destroy]
   resources :favorites, only:[:create,:destroy]
+  resources :iine,only:[:create,:destroy]
 end
