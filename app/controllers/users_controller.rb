@@ -10,7 +10,7 @@ before_action :ensure_correct_user, only:[:edit, :update]
   def show
     @book_new = Book.new
     @user = User.find(params[:id])
-    @books = @user.bookscd
+    @books = @user.books
   end
 
   def edit
@@ -26,7 +26,19 @@ before_action :ensure_correct_user, only:[:edit, :update]
     else
       render :edit
     end
+
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
   end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+  followings.include?(user)
+  end
+end
 
 private
   def user_params
