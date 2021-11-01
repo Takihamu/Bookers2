@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resources :iine,only:[:create,:destroy]
     resources :favorites, only:[:create,:destroy]
   end
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   resources :users, only: [:index, :create,:show,:edit,:update,:edit, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end

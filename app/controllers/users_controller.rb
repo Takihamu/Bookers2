@@ -10,7 +10,7 @@ before_action :ensure_correct_user, only:[:edit, :update]
   def show
     @book_new = Book.new
     @user = User.find(params[:id])
-    @books = @user.books
+    @books = @user.bookscd
   end
 
   def edit
