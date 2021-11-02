@@ -26,19 +26,7 @@ before_action :ensure_correct_user, only:[:edit, :update]
     else
       render :edit
     end
-
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
   end
-
-  def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
-  end
-
-  def following?(user)
-  followings.include?(user)
-  end
-end
 
 private
   def user_params
@@ -50,5 +38,5 @@ private
     unless @user == current_user
    redirect_to user_path(current_user.id)
     end
-  end
+end
 end
